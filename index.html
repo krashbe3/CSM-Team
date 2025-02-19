@@ -86,6 +86,42 @@
                 <p><strong>NoobMaster :</strong> "Melchior est peut-être drôle à regarder, mais jouer avec lui est une autre histoire. Il abandonne dès que les choses ne vont pas dans son sens."</p>
             </div>
         </div>
+        <div class="chart-container">
+    <h2>Statistiques de Parties de Melchior</h2>
+    <canvas id="myChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Parties Terminées', 'Parties Non Terminées'],
+            datasets: [{
+                label: 'Statistiques de Parties',
+                data: [10, 90], // Exemple : 10% terminées, 90% non terminées
+                backgroundColor: [
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(255, 99, 132, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 99, 132, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                }
+            }
+        },
+    });
+</script>
     </main>
     <footer>
         <p>&copy; 2025 Melchior Fan Club</p>
