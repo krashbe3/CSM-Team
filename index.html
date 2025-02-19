@@ -35,7 +35,7 @@
             height: auto;
             border: 4px solid #61dafb;
         }
-        .description, .testimonials {
+        .description, .testimonials, .chart-container, .rage-quit-counter, .wall-of-shame, .quiz, .quote-generator, .survival-tips, .rage-quit-poll {
             margin: 1em 0;
             line-height: 1.6;
             background: #333;
@@ -66,7 +66,7 @@
         <h1>Melchior : Le Roi du Rage-Quit</h1>
     </header>
     <main>
-        <img src="https://image.noelshack.com/fichiers/2025/08/3/1739970379-melkipasla-removebg-preview.png">
+        <img src="https://image.noelshack.com/fichiers/2025/08/3/1739970379-melkipasla-removebg-preview.png"
         <div class="description">
             <p>Melchior, connu sous le nom de "Le Roi du Rage-Quit", est une figure emblématique dans le monde du gaming. Ses célèbres accès de colère ont marqué les esprits et ont fait de lui une véritable légende. Chaque partie qu'il commence est une aventure imprévisible, où la frustration peut exploser à tout moment.</p>
             <p>Les "rage-quit" de Melchior sont devenus des moments cultes pour les spectateurs. Que ce soit en raison d'un bug inattendu, d'une défaite écrasante ou simplement d'un manque de chance, Melchior n'hésite pas à exprimer sa frustration de manière spectaculaire. Ses réactions sont souvent ponctuées de cris, de gestes exagérés et parfois même de lancers de manettes.</p>
@@ -77,55 +77,146 @@
         <div class="testimonials">
             <h2>Témoignages de Joueurs</h2>
             <div class="testimonial">
-                <p><strong>Joueur123 :</strong> "J'ai joué une partie avec Melchior, et c'était un vrai cauchemar. Il a quitté la partie après avoir perdu une seule manche !"</p>
+                <p><strong>Baldadur :</strong> "J'ai joué une partie avec Melchior, et c'était un vrai cauchemar. Il a quitté la partie après avoir perdu une seule manche !"</p>
             </div>
             <div class="testimonial">
-                <p><strong>GamerPro456 :</strong> "Je ne jouerai plus jamais avec Melchior. Il a ruiné notre stratégie en quittant le jeu au pire moment possible."</p>
+                <p><strong>Overkill :</strong> "Je ne jouerai plus jamais avec Melchior. Il a ruiné notre stratégie en quittant le jeu au pire moment possible."</p>
             </div>
             <div class="testimonial">
-                <p><strong>NoobMaster :</strong> "Melchior est peut-être drôle à regarder, mais jouer avec lui est une autre histoire. Il abandonne dès que les choses ne vont pas dans son sens."</p>
+                <p><strong>SirusJack :</strong> "Melchior est peut-être drôle à regarder, mais jouer avec lui est une autre histoire. Il abandonne dès que les choses ne vont pas dans son sens."</p>
             </div>
         </div>
         <div class="chart-container">
-    <h2>Statistiques de Parties de Melchior</h2>
-    <canvas id="myChart"></canvas>
-</div>
+            <h2>Statistiques de Parties de Melchior</h2>
+            <canvas id="myChart"></canvas>
+        </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-    const ctx = document.getElementById('myChart').getContext('2d');
-    const myChart = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: ['Parties Terminées', 'Parties Non Terminées'],
-            datasets: [{
-                label: 'Statistiques de Parties',
-                data: [10, 90], // Exemple : 10% terminées, 90% non terminées
-                backgroundColor: [
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(255, 99, 132, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(255, 99, 132, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'top',
+        <!-- Nouveaux éléments ajoutés -->
+        <div class="rage-quit-counter">
+            <h3>Compteur de Rage-Quit en Temps Réel</h3>
+            <p>Nombre de rage-quit de Melchior : <span id="rageQuitCount">0</span></p>
+        </div>
+
+        <script>
+            let rageQuitCount = 0;
+            function updateRageQuitCount() {
+                rageQuitCount += Math.floor(Math.random() * 3); // Incrémente aléatoirement
+                document.getElementById('rageQuitCount').innerText = rageQuitCount;
+            }
+            setInterval(updateRageQuitCount, 5000); // Met à jour toutes les 5 secondes
+        </script>
+
+        <div class="wall-of-shame">
+            <h3>Mur de la Honte</h3>
+            <p><strong>Waveoff :</strong> "Je pensais pouvoir gérer Melchior, mais il a quitté après seulement 5 minutes !"</p>
+            <p><strong>McLovin :</strong> "Melchior a ruiné notre raid. Plus jamais !"</p>
+            <p><strong>CasualHijo :</strong> "J'ai essayé de jouer avec lui... grosse erreur."</p>
+        </div>
+
+        <div class="quiz">
+            <h3>Quiz : Connaissez-vous Melchior ?</h3>
+            <p>Question 1 : Combien de manettes Melchior a-t-il cassées ?</p>
+            <input type="text" id="quizAnswer" placeholder="Votre réponse">
+            <button onclick="checkAnswer()">Vérifier</button>
+            <p id="quizResult"></p>
+        </div>
+
+        <script>
+            function checkAnswer() {
+                const answer = document.getElementById('quizAnswer').value;
+                const result = document.getElementById('quizResult');
+                if (answer.toLowerCase() === "trop") {
+                    result.innerText = "Correct ! Melchior a cassé trop de manettes pour les compter !";
+                } else {
+                    result.innerText = "Faux ! Essayez encore.";
                 }
             }
-        },
-    });
-</script>
+        </script>
+
+        <div class="quote-generator">
+            <h3>Générateur de Citations de Melchior</h3>
+            <button onclick="generateQuote()">Générer une Citation</button>
+            <p id="randomQuote"></p>
+        </div>
+
+        <script>
+            const quotes = [
+                "Je ne peux pas croire que j'ai perdu à cause de ÇA !",
+                "C'est fini, je quitte ce jeu pour toujours !",
+                "Pourquoi est-ce que ça m'arrive toujours à moi ?!",
+                "Je ne jouerai plus JAMAIS avec vous !"
+            ];
+
+            function generateQuote() {
+                const randomIndex = Math.floor(Math.random() * quotes.length);
+                document.getElementById('randomQuote').innerText = quotes[randomIndex];
+            }
+        </script>
+
+        <div class="survival-tips">
+            <h3>Conseils pour Survivre à une Partie avec Melchior</h3>
+            <p>1. Toujours avoir une manette de rechange.</p>
+            <p>2. Ne jamais le contrarier avant le café du matin.</p>
+            <p>3. Apprendre à courir vite, très vite.</p>
+        </div>
+
+        <div class="rage-quit-poll">
+            <h3>Sondage : Quel Type de Rage-Quit êtes-vous ?</h3>
+            <form onsubmit="return false;">
+                <label><input type="radio" name="poll" value="Le Lanceur de Manette"> Le Lanceur de Manette</label><br>
+                <label><input type="radio" name="poll" value="Le Crieur Silencieux"> Le Crieur Silencieux</label><br>
+                <label><input type="radio" name="poll" value="Le Quitteur Précoce"> Le Quitteur Précoce</label><br>
+                <button type="submit" onclick="showPollResult()">Voir le Résultat</button>
+            </form>
+            <p id="pollResult"></p>
+        </div>
+
+        <script>
+            function showPollResult() {
+                const result = document.getElementById('pollResult');
+                const selected = document.querySelector('input[name="poll"]:checked');
+                if (selected) {
+                    result.innerText = "Vous êtes un " + selected.value + " ! Amusez-vous bien !";
+                } else {
+                    result.innerText = "Veuillez sélectionner une option.";
+                }
+            }
+        </script>
     </main>
     <footer>
         <p>&copy; 2025 Melchior Fan Club</p>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Parties Terminées', 'Parties Non Terminées'],
+                datasets: [{
+                    label: 'Statistiques de Parties',
+                    data: [20, 80], // Exemple : 20% terminées, 80% non terminées
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(255, 99, 132, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(255, 99, 132, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                }
+            },
+        });
+    </script>
 </body>
 </html>
-
